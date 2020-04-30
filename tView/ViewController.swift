@@ -8,13 +8,21 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var label: UILabel!
+    
+    @IBOutlet weak var labelBottom: NSLayoutConstraint!
+    
+    @IBAction func moveLabel(_ sender: UIButton) {
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            //self.label.frame.origin.y += 150 // <= ダメなやつ
+            self.labelBottom.constant -= 150 // <= 大丈夫なやつ
+            self.view.layoutIfNeeded()       // <= 大丈夫なやつ
+        })
     }
-
-
+    
 }
 
